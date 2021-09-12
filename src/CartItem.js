@@ -1,20 +1,35 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    render() {
-        return (
+    constructor() {
+        super();
 
+        this.state = {
+            title: 'Mobile',
+            price: 100000,
+            qty: 3,
+            img: ''
+        }
+    }
+    
+    render() {
+        const {title, price, qty, img} = this.state;
+
+        return (
             <div className = "cart-item"> 
                 <div className = "left-block"> 
                     <img src = "" style = {styles.image}/>
                 </div>
                 <div className = "right-block">
-                    <p style = {{fontSize: 25 }}>Product Name</p>
-                    <p style = {{color: '#777' }}>Product Price</p>
-                    <p style = {{color: '#777' }}>Product Quantity</p>
+                    <p style = {{fontSize: 25 }}>{title}</p>
+                    <p style = {{color: '#777' }}>Rs. {price}</p>
+                    <p style = {{color: '#777' }}>Qty. {qty}</p>
 
                     <div className = "cart-item-actions"> 
                         {/* Action - Buttons */}
+                        <img className = "action-icons" alt = "increase" src = "https://image.flaticon.com/icons/png/512/1828/1828926.png" />
+                        <img className = "action-icons" alt = "decrease" src = "https://image.flaticon.com/icons/png/512/1828/1828906.png" />
+                        <img className = "action-icons" alt = "delete" src = "https://image.flaticon.com/icons/png/512/2089/2089743.png" />
                     </div>
                 </div>
             </div>
@@ -24,8 +39,8 @@ class CartItem extends React.Component {
 
 const styles = {
     image: {
-        height: 110,
-        width: 110,
+        height: 140,
+        width: 140,
         borderRadius: 4,
         background: '#ccc'
     }
