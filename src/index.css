@@ -25,6 +25,12 @@ body {
   cursor: pointer;
 }
 
-p {
-  margin: 0;
+span {
+  display: block;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  color: black;
 }
