@@ -2,14 +2,48 @@ import React from 'react';
 import CartItem from './CartItem';
 
 class Cart extends React.Component {
+    constructor() {
+        super();
+        
+        this.state = {
+            products: [
+                {
+                    title: 'Mobile',
+                    price: 999,
+                    quantity: 1,
+                    image: '', 
+                    id: 1
+                },
+                {
+                    title: 'Watch',
+                    price: 99,
+                    quantity: 10,
+                    image: '',
+                    id: 2
+                },
+                {
+                    title: 'Laptop',
+                    price: 100000,
+                    quantity: 3,
+                    image: '', 
+                    id: 3
+                }
+            ]
+        }
+    }
+
     render() {
-        var items = [1, 2, 3, 4, 5];
+        const {products} = this.state;
 
         return (
             <div className = "cart">
-                {items.map((item) => {
-                    return item + 5;
-                })}
+                {   products.map((product) => {
+                        return (
+                            <CartItem data = {product}
+                            key = {product.id} />
+                        )
+                    }) 
+                } 
             </div>
         );
     }
@@ -25,4 +59,6 @@ If we want all the elements of the array with a add of 5 then we use and functio
     {arr.map(elem) {
         return elem + increment;
     }}
+
+Props are basically same as arguments in an function call.
 */
