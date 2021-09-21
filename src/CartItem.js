@@ -1,99 +1,153 @@
 import React from 'react';
 
-class CartItem extends React.Component {
+// This is a CartItem Class. 
+// class CartItem extends React.Component {
     
-    // These functions cannot be used if we don't have have state of the component, then we have to handle those event in the parent component and pass than hadler as props.
-    increaseQuantity = () => {
+//     // These functions cannot be used if we don't have have state of the component, then we have to handle those event in the parent component and pass than hadler as props.
+//     increaseQuantity = () => {
         
-        // setState Form1 
-        // this.setState({
-        //     quantity: this.state.quantity + 1
-        // });
+//         // setState Form1 
+//         // this.setState({
+//         //     quantity: this.state.quantity + 1
+//         // });
 
-        // setState Form2
-        this.setState((prevState) => {
-            return {
-                quantity: prevState.quantity + 1
-            }
-        });
+//         // setState Form2
+//         this.setState((prevState) => {
+//             return {
+//                 quantity: prevState.quantity + 1
+//             }
+//         });
 
-        console.log(this.state);
-    }
+//         console.log(this.state);
+//     }
 
-    decreaseQuantity = () => {
-        if(this.state.quantity === 0) {
-            return;
-        }
+//     decreaseQuantity = () => {
+//         if(this.state.quantity === 0) {
+//             return;
+//         }
 
-        // setState Form1
-        // this.setState({
-        //     quantity: this.state.quantity - 1
-        // });
+//         // setState Form1
+//         // this.setState({
+//         //     quantity: this.state.quantity - 1
+//         // });
 
-        // setState Form2 
-        this.setState((prevState) => {
-            return {
-                quantity: prevState.quantity - 1
-            }
-        });
+//         // setState Form2 
+//         this.setState((prevState) => {
+//             return {
+//                 quantity: prevState.quantity - 1
+//             }
+//         });
 
-        console.log(this.state);
-    }
+//         console.log(this.state);
+//     }
 
-    render() {
+//     render() {
 
         // Javascript Object Destructuring.
-        const {title, price, quantity} = this.props.data;
-        const {data,
-               onIncreaseQuantity,
-               onDecreaseQunatity,
-               onDeleteProduct} = this.props;
-        return(
-            <div className = "cart-item">
-                <div className = "left-block">
-                    <img style = {style.image} />
-                </div>
+//         const {title, price, quantity} = this.props.data;
+//         const {data,
+//                onIncreaseQuantity,
+//                onDecreaseQunatity,
+//                onDeleteProduct} = this.props;
+//         return(
+//             <div className = "cart-item">
+//                 <div className = "left-block">
+//                     <img style = {style.image} />
+//                 </div>
 
-                <div className = "right-block">
-                    <span style = {{fontSize: 25}}>
-                        {title}
-                    </span>
-                    <span style = {{color: '#777'}}>
-                        Rs. {price}
-                    </span>
-                    <span style = {{color: '#777'}}>
-                        Qty. {quantity}
-                    </span>
+//                 <div className = "right-block">
+//                     <span style = {{fontSize: 25}}>
+//                         {title}
+//                     </span>
+//                     <span style = {{color: '#777'}}>
+//                         Rs. {price}
+//                     </span>
+//                     <span style = {{color: '#777'}}>
+//                         Qty. {quantity}
+//                     </span>
 
-                    <div className = "cart-item-actions">
-                        <img className = "action-icons"
-                             src = "https://image.flaticon.com/icons/png/512/1828/1828926.png"
-                             alt = "increase quantity"
+//                     <div className = "cart-item-actions">
+//                         <img className = "action-icons"
+//                              src = "https://image.flaticon.com/icons/png/512/1828/1828926.png"
+//                              alt = "increase quantity"
 
-                            //  onClick = {this.increaseQuantity}
+//                             //  onClick = {this.increaseQuantity}
+//                             onClick = {() => {
+//                                 onIncreaseQuantity(data)}}
+//                         />
+//                         <img className = "action-icons"
+//                              src = "https://image.flaticon.com/icons/png/512/1828/1828906.png"
+//                              alt = "decrease quantity"
+
+//                             //onClick = {this.decreaseQuantity}
+//                             onClick = {() => {
+//                                 onDecreaseQunatity(data)}}
+//                         />
+//                         <img className = "action-icons"
+//                              src = "https://image.flaticon.com/icons/png/512/1214/1214428.png"
+//                              alt = "remove item"
+
+//                              onClick = {() => {
+//                                 onDeleteProduct(data.id)}}
+//                         />
+//                     </div>
+//                 </div>
+//             </div>
+//         );
+//     }
+// }
+
+const CartItem = (props) => {
+    const {title, price, quantity} = props.data;
+    const {data,
+            onIncreaseQuantity,
+            onDecreaseQunatity,
+            onDeleteProduct} = props;
+    return(
+        <div className = "cart-item">
+            <div className = "left-block">
+                <img style = {style.image} />
+            </div>
+
+            <div className = "right-block">
+                <span style = {{fontSize: 25}}>
+                    {title}
+                </span>
+                <span style = {{color: '#777'}}>
+                    Rs. {price}
+                </span>
+                <span style = {{color: '#777'}}>
+                    Qty. {quantity}
+                </span>
+
+                <div className = "cart-item-actions">
+                    <img className = "action-icons"
+                            src = "https://image.flaticon.com/icons/png/512/1828/1828926.png"
+                            alt = "increase quantity"
+
+                        //  onClick = {this.increaseQuantity}
+                        onClick = {() => {
+                            onIncreaseQuantity(data)}}
+                    />
+                    <img className = "action-icons"
+                            src = "https://image.flaticon.com/icons/png/512/1828/1828906.png"
+                            alt = "decrease quantity"
+
+                        //onClick = {this.decreaseQuantity}
+                        onClick = {() => {
+                            onDecreaseQunatity(data)}}
+                    />
+                    <img className = "action-icons"
+                            src = "https://image.flaticon.com/icons/png/512/1214/1214428.png"
+                            alt = "remove item"
+
                             onClick = {() => {
-                                onIncreaseQuantity(data)}}
-                        />
-                        <img className = "action-icons"
-                             src = "https://image.flaticon.com/icons/png/512/1828/1828906.png"
-                             alt = "decrease quantity"
-
-                            //onClick = {this.decreaseQuantity}
-                            onClick = {() => {
-                                onDecreaseQunatity(data)}}
-                        />
-                        <img className = "action-icons"
-                             src = "https://image.flaticon.com/icons/png/512/1214/1214428.png"
-                             alt = "remove item"
-
-                             onClick = {() => {
-                                onDeleteProduct(data.id)}}
-                        />
-                    </div>
+                            onDeleteProduct(data.id)}}
+                    />
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 const style = {
@@ -149,4 +203,5 @@ We have two forms of setState function in an component
     Shallow merging basically means that only the updated keys of the current state is changed else keys are not updated and touched.
 
     // It is a good practice when we get state from parent component we use java script object desturcturing.
+    // An component should not change it's own state but it can change child component state.
 */

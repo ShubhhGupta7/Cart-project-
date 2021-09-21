@@ -1,22 +1,21 @@
 import React from 'react'
 
-class NavBar extends React.Component {
-    render() {
+// Creating react Component usint functions.
+const Navbar = (props) => {
         return(
-            <div className = {styles.nav}> 
-                <div className = {styles.cartIconContainer}>
+            <div style = {styles.nav}> 
+                <div style = {styles.cartIconContainer}>
                     <img alt = "cart-icon"
                         src = "https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
-                        className = {styles.cartIcon}
+                        style = {styles.cartIcon}
                     />
-                    <span className = {styles.cartCount}>3</span>
+                    <span style = {styles.cartCount}>{props.itemCount}</span>
                 </div>
             </div>
         );
-    }
 }
 
-export default NavBar;
+export default Navbar;
 
 const styles = {
     cartIcon: {
