@@ -98,7 +98,7 @@ import React from 'react';
 // }
 
 const CartItem = (props) => {
-    const {title, price, quantity} = props.data;
+    const {title, price, quantity, image} = props.data;
     const {data,
             onIncreaseQuantity,
             onDecreaseQunatity,
@@ -106,7 +106,8 @@ const CartItem = (props) => {
     return(
         <div className = "cart-item">
             <div className = "left-block">
-                <img style = {style.image} />
+                <img style = {style.image}
+                    src = {image} />
             </div>
 
             <div className = "right-block">
@@ -154,7 +155,6 @@ const style = {
     image: {
         height: 140,
         width: 140,
-        background: '#ccc',
         borderRadius: 4
     }
 }
